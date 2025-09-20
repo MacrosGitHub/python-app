@@ -9,7 +9,8 @@ app = Flask(__name__)
 def details() :
     return jsonify({
         'time': datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
-        'hostname': socket.gethostname()
+        'hostname': socket.gethostname(),
+        'message': "Server is UP"
     })
 
 @app.route('/api/v1/health')
