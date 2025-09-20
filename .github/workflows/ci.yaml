@@ -22,4 +22,4 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: macrosdockerhub/python-app:${GITHUB_SHA::6}
+          tags: macrosdockerhub/python-app:${{ github.sha }}
