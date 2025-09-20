@@ -1,4 +1,4 @@
-name: ci
+name: cicd
 
 on:
   push:
@@ -8,11 +8,11 @@ on:
       - main
 
 jobs:
-  docker:
-    runs-on: self-hosted
+  ci:
+    runs-on: ubuntu-latest
     steps:
       - 
-        name: Declare some variables
+        name: Declare SHA
         shell: bash
         run: |
           echo "sha_short=$(echo $GITHUB_SHA | cut -c1-8)" >> "$GITHUB_ENV"
@@ -28,3 +28,15 @@ jobs:
         with:
           push: true
           tags: macrosdockerhub/python-app:${{ env.sha_short }}
+  cd:
+    needs: ci
+    runs-on: self-hosted    
+    steps:
+      -
+        name: Sync with ArgoCD
+        shell: bash
+        run: |
+          argocd login argocd-server.argocd --insecure --grpc-web \
+          --username ${{ secrets.ARGOCD_USER }} --password ${{ secrets.ARGOCD_PASSWORD }}
+          argocd app sync python-app
+
