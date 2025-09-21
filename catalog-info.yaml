@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: python-app
+  description: A simple python app  
+  annotations:
+    github.com/project-slug: MacrosGitHub/python-app
+spec:
+  type: service
+  owner: john@example.com
+  lifecycle: experimental
