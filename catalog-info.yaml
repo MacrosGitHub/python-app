@@ -7,5 +7,5 @@ metadata:
     github.com/project-slug: MacrosGitHub/python-app
 spec:
   type: service
-  owner: john@example.com
+  owner: development
   lifecycle: experimental
