@@ -5,6 +5,7 @@ metadata:
   description: A simple python app  
   annotations:
     github.com/project-slug: MacrosGitHub/python-app
+    backstage.io/techdocs-ref: dir:.
 spec:
   type: service
   owner: development
